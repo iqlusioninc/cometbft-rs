@@ -271,6 +271,7 @@ mod tests {
 
     #[cfg(feature = "secp256k1")]
     #[test]
+    #[allow(deprecated)]
     fn secp256k1_test_vectors() {
         for (i, v) in SECP256K1_TEST_VECTORS.iter().enumerate() {
             let public_key = v[0];

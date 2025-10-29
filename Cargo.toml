@@ -4,11 +4,6 @@ resolver = "2"
 members = [
     "cometbft",
     "config",
-    "light-client",
-    "light-client-verifier",
-    "light-client-detector",
-    "light-client-cli",
-    "light-client-js",
     "pbt-gen",
     "proto",
     "rpc",
@@ -19,7 +14,3 @@ exclude = [
     "proto-compiler",
     "tools/no-std-check"
 ]
-
-[profile.release.package.cometbft-light-client-js]
-# Tell `rustc` to optimize for small code size.
-opt-level = "s"
