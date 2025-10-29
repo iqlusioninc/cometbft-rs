@@ -64,7 +64,7 @@ mock-client = [
 ]
 
 [dependencies]
-cometbft = { package = "iq-cometbft", version = "=0.1.0-pre.0", default-features = false, path = "../cometbft" }
+cometbft = { package = "iq-cometbft", version = "=0.1.0-pre.1", default-features = false, path = "../cometbft" }
 cometbft-config = { package = "iq-cometbft-config", version = "=0.1.0-pre.0", path = "../config", default-features = false }
 cometbft-proto = { package = "iq-cometbft-proto", version = "=0.1.0-pre.0", path = "../proto", default-features = false }
 
