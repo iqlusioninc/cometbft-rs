@@ -69,16 +69,16 @@ impl PrivateKey {
         }
     }
 
-    /// From an [`ed25519_consensus::SigningKey`]
+    /// From an [`ed25519_dalek::SigningKey`]
     #[cfg(feature = "rust-crypto")]
-    pub fn from_ed25519_consensus(sk: ed25519_consensus::SigningKey) -> Self {
+    pub fn from_ed25519_dalek(sk: ed25519_dalek::SigningKey) -> Self {
         Self::Ed25519(sk.into())
     }
 }
 
 #[cfg(feature = "rust-crypto")]
-impl From<ed25519_consensus::SigningKey> for PrivateKey {
-    fn from(sk: ed25519_consensus::SigningKey) -> Self {
+impl From<ed25519_dalek::SigningKey> for PrivateKey {
+    fn from(sk: ed25519_dalek::SigningKey) -> Self {
         Self::Ed25519(sk.into())
     }
 }

@@ -18,8 +18,8 @@ impl SigningKey {
 
     #[cfg(feature = "rust-crypto")]
     pub fn verification_key(&self) -> VerificationKey {
-        let privkey = ed25519_consensus::SigningKey::from(self.0);
-        let pubkey = privkey.verification_key();
+        let privkey = ed25519_dalek::SigningKey::from(self.0);
+        let pubkey = privkey.verifying_key();
         let pubkey_bytes = pubkey.to_bytes();
         VerificationKey::new(pubkey_bytes)
     }
@@ -39,17 +39,17 @@ impl TryFrom<&'_ [u8]> for SigningKey {
 }
 
 #[cfg(feature = "rust-crypto")]
-impl TryFrom<SigningKey> for ed25519_consensus::SigningKey {
+impl TryFrom<SigningKey> for ed25519_dalek::SigningKey {
     type Error = Error;
 
     fn try_from(src: SigningKey) -> Result<Self, Error> {
-        Ok(ed25519_consensus::SigningKey::from(src.0))
+        Ok(ed25519_dalek::SigningKey::from(src.0))
     }
 }
 
 #[cfg(feature = "rust-crypto")]
-impl From<ed25519_consensus::SigningKey> for SigningKey {
-    fn from(sk: ed25519_consensus::SigningKey) -> Self {
+impl From<ed25519_dalek::SigningKey> for SigningKey {
+    fn from(sk: ed25519_dalek::SigningKey) -> Self {
         Self::new(sk.to_bytes())
     }
 }

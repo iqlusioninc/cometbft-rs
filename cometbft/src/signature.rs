@@ -102,13 +102,6 @@ impl From<Ed25519Signature> for Signature {
     }
 }
 
-#[cfg(feature = "rust-crypto")]
-impl From<ed25519_consensus::Signature> for Signature {
-    fn from(sig: ed25519_consensus::Signature) -> Signature {
-        Self(sig.to_bytes().to_vec())
-    }
-}
-
 #[cfg(feature = "secp256k1")]
 impl From<Secp256k1Signature> for Signature {
     fn from(sig: Secp256k1Signature) -> Signature {

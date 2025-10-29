@@ -255,9 +255,9 @@ impl PublicKey {
         Ed25519::try_from(bytes).map(PublicKey::Ed25519).ok()
     }
 
-    /// From an [`ed25519_consensus::VerificationKey`]
+    /// From an [`ed25519_dalek::VerifyingKey`]
     #[cfg(feature = "rust-crypto")]
-    pub fn from_ed25519_consensus(vk: ed25519_consensus::VerificationKey) -> Self {
+    pub fn from_ed25519_dalek(vk: ed25519_dalek::VerifyingKey) -> Self {
         Self::from(vk)
     }
 
@@ -327,8 +327,8 @@ impl From<Secp256k1> for PublicKey {
 }
 
 #[cfg(feature = "rust-crypto")]
-impl From<ed25519_consensus::VerificationKey> for PublicKey {
-    fn from(vk: ed25519_consensus::VerificationKey) -> PublicKey {
+impl From<ed25519_dalek::VerifyingKey> for PublicKey {
+    fn from(vk: ed25519_dalek::VerifyingKey) -> PublicKey {
         PublicKey::Ed25519(vk.into())
     }
 }

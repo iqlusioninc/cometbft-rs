@@ -43,18 +43,18 @@ impl TryFrom<&'_ [u8]> for VerificationKey {
 }
 
 #[cfg(feature = "rust-crypto")]
-impl TryFrom<VerificationKey> for ed25519_consensus::VerificationKey {
+impl TryFrom<VerificationKey> for ed25519_dalek::VerifyingKey {
     type Error = Error;
 
     fn try_from(src: VerificationKey) -> Result<Self, Error> {
-        ed25519_consensus::VerificationKey::try_from(src.0)
+        ed25519_dalek::VerifyingKey::from_bytes(&src.0)
             .map_err(|_| Error::invalid_key("malformed Ed25519 public key".into()))
     }
 }
 
 #[cfg(feature = "rust-crypto")]
-impl From<ed25519_consensus::VerificationKey> for VerificationKey {
-    fn from(vk: ed25519_consensus::VerificationKey) -> Self {
+impl From<ed25519_dalek::VerifyingKey> for VerificationKey {
+    fn from(vk: ed25519_dalek::VerifyingKey) -> Self {
         Self::new(vk.to_bytes())
     }
 }

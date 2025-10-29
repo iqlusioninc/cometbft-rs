@@ -2,6 +2,7 @@
 
 use crate::crypto::signature::Error;
 use crate::{PublicKey, Signature};
+use signature::Verifier as _;
 
 #[derive(Copy, Clone, Debug, Default, PartialEq, Eq)]
 pub struct Verifier;
@@ -11,12 +12,14 @@ impl crate::crypto::signature::Verifier for Verifier {
         #[allow(unreachable_patterns)]
         match pubkey {
             PublicKey::Ed25519(pk) => {
-                let pubkey = ed25519_consensus::VerificationKey::try_from(pk)
+                let pubkey = ed25519_dalek::VerifyingKey::try_from(pk)
                     .map_err(|_| Error::MalformedPublicKey)?;
-                let sig = ed25519_consensus::Signature::try_from(signature.as_bytes())
+                let sig = ed25519_dalek::Signature::try_from(signature.as_bytes())
                     .map_err(|_| Error::MalformedSignature)?;
+
+                // TODO(tarcieri): ZIP-215
                 pubkey
-                    .verify(&sig, msg)
+                    .verify(msg, &sig)
                     .map_err(|_| Error::VerificationFailed)
             },
             #[cfg(feature = "secp256k1")]
