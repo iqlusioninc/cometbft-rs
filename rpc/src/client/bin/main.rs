@@ -3,7 +3,7 @@
 use core::str::FromStr;
 
 use cometbft::Hash;
-use cometbft_rpc::{
+use iq_cometbft_rpc::{
     client::CompatMode,
     event::{self, Event, EventData},
     query::Query,

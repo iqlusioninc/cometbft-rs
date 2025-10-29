@@ -50,7 +50,7 @@ pub(crate) type SubscriptionRx = ChannelRx<Result<Event, Error>>;
 /// ## Examples
 ///
 /// ```
-/// use cometbft_rpc::Subscription;
+/// use iq_cometbft_rpc::Subscription;
 /// use futures::StreamExt;
 ///
 /// /// Prints `count` events from the given subscription.

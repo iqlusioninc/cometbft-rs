@@ -5,11 +5,12 @@
 use ::signature::DigestVerifier;
 use digest::Digest;
 
-use cometbft::crypto::signature::{self, Verifier};
-use cometbft::crypto::{sha256::HASH_SIZE, Sha256};
-use cometbft::{PublicKey, Signature};
+use iq_cometbft::crypto::signature::{self, Verifier};
+use iq_cometbft::crypto::{sha256::HASH_SIZE, Sha256};
+use iq_cometbft::{PublicKey, Signature};
 
 #[derive(Debug, Default)]
+#[allow(dead_code)]
 struct SubstrateSha256(sha2::Sha256);
 
 #[derive(Debug, Default)]
@@ -43,9 +44,9 @@ impl Sha256 for SubstrateSha256 {
 
 mod tests {
     use super::{SubstrateSha256, SubstrateSignatureVerifier};
-    use cometbft::crypto::signature::Verifier;
-    use cometbft::crypto::Sha256;
-    use cometbft::{PublicKey, Signature};
+    use iq_cometbft::crypto::signature::Verifier;
+    use iq_cometbft::crypto::Sha256;
+    use iq_cometbft::{PublicKey, Signature};
 
     use subtle_encoding::hex;
 

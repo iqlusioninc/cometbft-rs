@@ -110,7 +110,7 @@ impl Event {
     /// trait allow ergonomic event construction, as in this example:
     ///
     /// ```
-    /// use cometbft::abci::{Event, EventAttributeIndexExt};
+    /// use iq_cometbft::abci::{Event, EventAttributeIndexExt};
     ///
     /// let event = Event::new(
     ///     "app",

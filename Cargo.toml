@@ -7,7 +7,6 @@ members = [
     "pbt-gen",
     "proto",
     "rpc",
-    "testgen"
 ]
 
 exclude = [

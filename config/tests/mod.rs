@@ -5,7 +5,7 @@
 use std::{fs, path::PathBuf, time::Duration};
 
 use cometbft::node;
-use cometbft_config::*;
+use iq_cometbft_config::*;
 #[cfg(test)]
 use pretty_assertions::assert_eq;
 
