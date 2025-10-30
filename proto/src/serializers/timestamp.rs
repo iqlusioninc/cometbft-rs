@@ -107,10 +107,14 @@ pub fn fmt_as_rfc3339_nanos(t: OffsetDateTime, f: &mut impl fmt::Write) -> fmt::
     } else {
         let mut secfrac = nanos;
         let mut secfrac_width = 9;
+
+        // TODO(tarcieri): use `is_multiple_of` when MSRV is 1.87
+        #[allow(clippy::manual_is_multiple_of)]
         while secfrac % 10 == 0 {
             secfrac /= 10;
             secfrac_width -= 1;
         }
+
         write!(
             f,
             "{year:04}-{month:02}-{day:02}T{hour:02}:{minute:02}:{second:02}.{secfrac:0sfw$}Z",

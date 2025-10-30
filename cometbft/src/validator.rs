@@ -516,8 +516,9 @@ mod v1 {
         type Error = Error;
 
         fn try_from(vu: RawValidatorUpdate) -> Result<Self, Self::Error> {
-            let pub_key_type: String = vu.pub_key_type.try_into()?;
-            let pub_key_bytes: Vec<u8> = vu.pub_key_bytes.try_into()?;
+            let pub_key_type: String = vu.pub_key_type;
+            let pub_key_bytes = Vec::from(vu.pub_key_bytes);
+
             Ok(Self {
                 pub_key: PublicKey::try_from_type_and_bytes(&pub_key_type, &pub_key_bytes)?,
                 power: vu.power.try_into()?,

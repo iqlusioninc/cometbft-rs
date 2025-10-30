@@ -33,21 +33,15 @@ mod v1 {
     impl Protobuf<RawSignBytesRequest> for SignBytesRequest {}
     impl Protobuf<RawSignBytesResponse> for SignBytesResponse {}
 
-    impl TryFrom<RawSignBytesRequest> for SignBytesRequest {
-        type Error = Error;
-
-        fn try_from(req: RawSignBytesRequest) -> Result<Self, Self::Error> {
-            Ok(SignBytesRequest {
-                bytes: req.value.try_into()?,
-            })
+    impl From<RawSignBytesRequest> for SignBytesRequest {
+        fn from(req: RawSignBytesRequest) -> Self {
+            SignBytesRequest { bytes: req.value }
         }
     }
 
     impl From<SignBytesRequest> for RawSignBytesRequest {
         fn from(req: SignBytesRequest) -> Self {
-            RawSignBytesRequest {
-                value: req.bytes.into(),
-            }
+            RawSignBytesRequest { value: req.bytes }
         }
     }
 
@@ -56,7 +50,7 @@ mod v1 {
 
         fn try_from(resp: RawSignBytesResponse) -> Result<Self, Self::Error> {
             Ok(SignBytesResponse {
-                signature: resp.signature.try_into()?,
+                signature: resp.signature,
                 error: resp.error.map(TryInto::try_into).transpose()?,
             })
         }
@@ -65,7 +59,7 @@ mod v1 {
     impl From<SignBytesResponse> for RawSignBytesResponse {
         fn from(resp: SignBytesResponse) -> Self {
             RawSignBytesResponse {
-                signature: resp.signature.into(),
+                signature: resp.signature,
                 error: resp.error.map(Into::into),
             }
         }
