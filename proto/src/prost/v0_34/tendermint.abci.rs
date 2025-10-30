@@ -46,16 +46,16 @@ pub mod request {
     }
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RequestEcho {
     #[prost(string, tag = "1")]
     pub message: ::prost::alloc::string::String,
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RequestFlush {}
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RequestInfo {
     #[prost(string, tag = "1")]
     pub version: ::prost::alloc::string::String,
@@ -66,7 +66,7 @@ pub struct RequestInfo {
 }
 /// nondeterministic
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RequestSetOption {
     #[prost(string, tag = "1")]
     pub key: ::prost::alloc::string::String,
@@ -90,7 +90,7 @@ pub struct RequestInitChain {
     pub initial_height: i64,
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RequestQuery {
     #[prost(bytes = "bytes", tag = "1")]
     pub data: ::prost::bytes::Bytes,
@@ -114,7 +114,7 @@ pub struct RequestBeginBlock {
     pub byzantine_validators: ::prost::alloc::vec::Vec<Evidence>,
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RequestCheckTx {
     #[prost(bytes = "bytes", tag = "1")]
     pub tx: ::prost::bytes::Bytes,
@@ -122,27 +122,27 @@ pub struct RequestCheckTx {
     pub r#type: i32,
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RequestDeliverTx {
     #[prost(bytes = "bytes", tag = "1")]
     pub tx: ::prost::bytes::Bytes,
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RequestEndBlock {
     #[prost(int64, tag = "1")]
     pub height: i64,
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RequestCommit {}
 /// lists available snapshots
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RequestListSnapshots {}
 /// offers a snapshot to the application
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RequestOfferSnapshot {
     /// snapshot offered by peers
     #[prost(message, optional, tag = "1")]
@@ -153,7 +153,7 @@ pub struct RequestOfferSnapshot {
 }
 /// loads a snapshot chunk
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RequestLoadSnapshotChunk {
     #[prost(uint64, tag = "1")]
     pub height: u64,
@@ -164,7 +164,7 @@ pub struct RequestLoadSnapshotChunk {
 }
 /// Applies a snapshot chunk
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RequestApplySnapshotChunk {
     #[prost(uint32, tag = "1")]
     pub index: u32,
@@ -223,22 +223,22 @@ pub mod response {
 }
 /// nondeterministic
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ResponseException {
     #[prost(string, tag = "1")]
     pub error: ::prost::alloc::string::String,
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ResponseEcho {
     #[prost(string, tag = "1")]
     pub message: ::prost::alloc::string::String,
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ResponseFlush {}
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ResponseInfo {
     #[prost(string, tag = "1")]
     #[serde(default)]
@@ -259,7 +259,7 @@ pub struct ResponseInfo {
 }
 /// nondeterministic
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ResponseSetOption {
     #[prost(uint32, tag = "1")]
     pub code: u32,
@@ -375,7 +375,7 @@ pub struct ResponseEndBlock {
     pub events: ::prost::alloc::vec::Vec<Event>,
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ResponseCommit {
     /// reserve 1
     #[prost(bytes = "bytes", tag = "2")]
@@ -390,7 +390,7 @@ pub struct ResponseListSnapshots {
     pub snapshots: ::prost::alloc::vec::Vec<Snapshot>,
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ResponseOfferSnapshot {
     #[prost(enumeration = "response_offer_snapshot::Result", tag = "1")]
     pub result: i32,
@@ -454,13 +454,13 @@ pub mod response_offer_snapshot {
     }
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ResponseLoadSnapshotChunk {
     #[prost(bytes = "bytes", tag = "1")]
     pub chunk: ::prost::bytes::Bytes,
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ResponseApplySnapshotChunk {
     #[prost(enumeration = "response_apply_snapshot_chunk::Result", tag = "1")]
     pub result: i32,
@@ -532,7 +532,7 @@ pub mod response_apply_snapshot_chunk {
 /// ConsensusParams contains all consensus-relevant parameters
 /// that can be adjusted by the abci app
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ConsensusParams {
     #[prost(message, optional, tag = "1")]
     pub block: ::core::option::Option<BlockParams>,
@@ -545,7 +545,7 @@ pub struct ConsensusParams {
 }
 /// BlockParams contains limits on the block size.
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct BlockParams {
     /// Note: must be greater than 0
     #[prost(int64, tag = "1")]
@@ -575,7 +575,7 @@ pub struct Event {
 }
 /// EventAttribute is a single key-value pair, associated with an event.
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct EventAttribute {
     #[prost(bytes = "bytes", tag = "1")]
     pub key: ::prost::bytes::Bytes,
@@ -602,7 +602,7 @@ pub struct TxResult {
 }
 /// Validator
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct Validator {
     /// The first 20 bytes of SHA256(public key)
     #[prost(bytes = "bytes", tag = "1")]
@@ -615,7 +615,7 @@ pub struct Validator {
 }
 /// ValidatorUpdate
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ValidatorUpdate {
     #[prost(message, optional, tag = "1")]
     pub pub_key: ::core::option::Option<super::crypto::PublicKey>,
@@ -624,7 +624,7 @@ pub struct ValidatorUpdate {
 }
 /// VoteInfo
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct VoteInfo {
     #[prost(message, optional, tag = "1")]
     pub validator: ::core::option::Option<Validator>,
@@ -632,7 +632,7 @@ pub struct VoteInfo {
     pub signed_last_block: bool,
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct Evidence {
     #[prost(enumeration = "EvidenceType", tag = "1")]
     pub r#type: i32,
@@ -652,7 +652,7 @@ pub struct Evidence {
     pub total_voting_power: i64,
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct Snapshot {
     /// The height at which the snapshot was taken
     #[prost(uint64, tag = "1")]
@@ -894,7 +894,7 @@ pub mod abci_application_server {
         B: Body + std::marker::Send + 'static,
         B::Error: Into<StdError> + std::marker::Send + 'static,
     {
-        type Response = http::Response<tonic::body::BoxBody>;
+        type Response = http::Response<tonic::body::Body>;
         type Error = std::convert::Infallible;
         type Future = BoxFuture<Self::Response, Self::Error>;
         fn poll_ready(
@@ -934,7 +934,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = EchoSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -978,7 +978,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = FlushSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1022,7 +1022,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = InfoSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1067,7 +1067,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = SetOptionSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1112,7 +1112,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = DeliverTxSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1157,7 +1157,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = CheckTxSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1201,7 +1201,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = QuerySvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1246,7 +1246,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = CommitSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1291,7 +1291,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = InitChainSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1336,7 +1336,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = BeginBlockSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1381,7 +1381,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = EndBlockSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1427,7 +1427,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = ListSnapshotsSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1473,7 +1473,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = OfferSnapshotSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1519,7 +1519,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = LoadSnapshotChunkSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1568,7 +1568,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = ApplySnapshotChunkSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1585,7 +1585,9 @@ pub mod abci_application_server {
                 }
                 _ => {
                     Box::pin(async move {
-                        let mut response = http::Response::new(empty_body());
+                        let mut response = http::Response::new(
+                            tonic::body::Body::default(),
+                        );
                         let headers = response.headers_mut();
                         headers
                             .insert(

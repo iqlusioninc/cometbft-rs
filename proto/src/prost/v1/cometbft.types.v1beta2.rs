@@ -2,7 +2,7 @@
 /// ConsensusParams contains consensus critical parameters that determine the
 /// validity of blocks.
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ConsensusParams {
     #[prost(message, optional, tag = "1")]
     pub block: ::core::option::Option<BlockParams>,
@@ -15,7 +15,7 @@ pub struct ConsensusParams {
 }
 /// BlockParams contains limits on the block size.
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct BlockParams {
     /// Max block size, in bytes.
     /// Note: must be greater than 0

@@ -37,7 +37,7 @@ pub struct ResponseEndBlock {
     pub events: ::prost::alloc::vec::Vec<super::super::abci::v1beta2::Event>,
 }
 /// ConsensusParamsInfo represents the latest consensus params, or the last height it changed
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ConsensusParamsInfo {
     #[prost(message, optional, tag = "1")]
     pub consensus_params: ::core::option::Option<
