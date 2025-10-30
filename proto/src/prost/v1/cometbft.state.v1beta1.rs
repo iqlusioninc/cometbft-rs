@@ -26,7 +26,7 @@ pub struct ValidatorsInfo {
     pub last_height_changed: i64,
 }
 /// ConsensusParamsInfo represents the latest consensus params, or the last height it changed
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ConsensusParamsInfo {
     #[prost(message, optional, tag = "1")]
     pub consensus_params: ::core::option::Option<
@@ -44,7 +44,7 @@ pub struct AbciResponsesInfo {
     pub height: i64,
 }
 /// Version is a message for storing versioning information.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct Version {
     #[prost(message, optional, tag = "1")]
     pub consensus: ::core::option::Option<super::super::version::v1::Consensus>,

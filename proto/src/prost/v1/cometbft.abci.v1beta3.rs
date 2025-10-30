@@ -145,7 +145,7 @@ pub struct RequestExtendVote {
 }
 /// Verify the vote extension
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RequestVerifyVoteExtension {
     /// the hash of the block that this received vote corresponds to
     #[prost(bytes = "bytes", tag = "1")]
@@ -274,21 +274,21 @@ pub struct ResponseCheckTx {
 }
 /// ResponseCommit indicates how much blocks should CometBFT retain.
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ResponseCommit {
     #[prost(int64, tag = "3")]
     pub retain_height: i64,
 }
 /// ResponseExtendVote is the result of extending a vote with application-injected data.
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ResponseExtendVote {
     #[prost(bytes = "bytes", tag = "1")]
     pub vote_extension: ::prost::bytes::Bytes,
 }
 /// ResponseVerifyVoteExtension is the result of verifying a vote extension.
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ResponseVerifyVoteExtension {
     #[prost(enumeration = "response_verify_vote_extension::VerifyStatus", tag = "1")]
     pub status: i32,
@@ -371,7 +371,7 @@ pub struct ResponseFinalizeBlock {
 }
 /// VoteInfo contains the information about the vote.
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct VoteInfo {
     #[prost(message, optional, tag = "1")]
     pub validator: ::core::option::Option<super::v1beta1::Validator>,
@@ -380,7 +380,7 @@ pub struct VoteInfo {
 }
 /// ExtendedVoteInfo extends VoteInfo with the vote extensions (non-deterministic).
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ExtendedVoteInfo {
     /// The validator that sent the vote.
     #[prost(message, optional, tag = "1")]
@@ -662,7 +662,7 @@ pub mod abci_server {
         B: Body + std::marker::Send + 'static,
         B::Error: Into<StdError> + std::marker::Send + 'static,
     {
-        type Response = http::Response<tonic::body::BoxBody>;
+        type Response = http::Response<tonic::body::Body>;
         type Error = std::convert::Infallible;
         type Future = BoxFuture<Self::Response, Self::Error>;
         fn poll_ready(
@@ -703,7 +703,7 @@ pub mod abci_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = EchoSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -748,7 +748,7 @@ pub mod abci_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = FlushSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -793,7 +793,7 @@ pub mod abci_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = InfoSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -840,7 +840,7 @@ pub mod abci_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = CheckTxSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -885,7 +885,7 @@ pub mod abci_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = QuerySvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -930,7 +930,7 @@ pub mod abci_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = CommitSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -973,7 +973,7 @@ pub mod abci_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = InitChainSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1021,7 +1021,7 @@ pub mod abci_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = ListSnapshotsSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1069,7 +1069,7 @@ pub mod abci_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = OfferSnapshotSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1117,7 +1117,7 @@ pub mod abci_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = LoadSnapshotChunkSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1165,7 +1165,7 @@ pub mod abci_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = ApplySnapshotChunkSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1210,7 +1210,7 @@ pub mod abci_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = PrepareProposalSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1255,7 +1255,7 @@ pub mod abci_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = ProcessProposalSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1298,7 +1298,7 @@ pub mod abci_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = ExtendVoteSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1343,7 +1343,7 @@ pub mod abci_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = VerifyVoteExtensionSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1388,7 +1388,7 @@ pub mod abci_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = FinalizeBlockSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1405,7 +1405,9 @@ pub mod abci_server {
                 }
                 _ => {
                     Box::pin(async move {
-                        let mut response = http::Response::new(empty_body());
+                        let mut response = http::Response::new(
+                            tonic::body::Body::default(),
+                        );
                         let headers = response.headers_mut();
                         headers
                             .insert(

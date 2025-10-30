@@ -78,7 +78,7 @@ fn main() {
 
         let out_dir = var("OUT_DIR")
             .map(|d| Path::new(&d).join(version.ident))
-            .or_else(|_| tempdir().map(|d| d.into_path()))
+            .or_else(|_| tempdir().map(|d| d.keep()))
             .unwrap();
 
         let mut pb = prost_build::Config::new();
@@ -120,7 +120,7 @@ fn main() {
         pb.extern_path(".google.protobuf.Any", "crate::google::protobuf::Any");
 
         println!("[info] => Creating structs and interfaces.");
-        let builder = tonic_build::configure()
+        let builder = tonic_prost_build::configure()
             .out_dir(&out_dir)
             .build_server(true)
             .build_client(false)

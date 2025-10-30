@@ -14,7 +14,7 @@ pub struct ValidatorSet {
 }
 /// Validator represents a node participating in the consensus protocol.
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct Validator {
     #[prost(bytes = "vec", tag = "1")]
     #[serde(with = "crate::serializers::bytes::hexstring")]
@@ -32,7 +32,7 @@ pub struct Validator {
 /// SimpleValidator is a Validator, which is serialized and hashed in consensus.
 /// Address is removed because it's redundant with the pubkey.
 /// Proposer priority is removed because it changes every round.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct SimpleValidator {
     #[prost(message, optional, tag = "1")]
     pub pub_key: ::core::option::Option<super::super::crypto::v1::PublicKey>,
@@ -78,7 +78,7 @@ impl BlockIdFlag {
 }
 /// Header of the parts set for a block.
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct PartSetHeader {
     #[prost(uint32, tag = "1")]
     #[serde(with = "crate::serializers::part_set_header_total")]
@@ -88,7 +88,7 @@ pub struct PartSetHeader {
     pub hash: ::prost::alloc::vec::Vec<u8>,
 }
 /// Part of the block.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct Part {
     #[prost(uint32, tag = "1")]
     pub index: u32,
@@ -99,7 +99,7 @@ pub struct Part {
 }
 /// BlockID defines the unique ID of a block as its hash and its `PartSetHeader`.
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct BlockId {
     #[prost(bytes = "vec", tag = "1")]
     #[serde(with = "crate::serializers::bytes::hexstring")]
@@ -110,7 +110,7 @@ pub struct BlockId {
 }
 /// Header defines the structure of a block header.
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct Header {
     /// basic block info
     #[prost(message, optional, tag = "1")]
@@ -171,7 +171,7 @@ pub struct Header {
 }
 /// Data contains the set of transactions included in the block
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct Data {
     /// Txs that will be applied by state @ block.Height+1.
     /// NOTE: not all txs here are valid.  We're just agreeing on the order first.
@@ -183,7 +183,7 @@ pub struct Data {
 /// Vote represents a prevote or precommit vote from validators for
 /// consensus.
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct Vote {
     #[prost(enumeration = "SignedMsgType", tag = "1")]
     pub r#type: i32,
@@ -224,7 +224,7 @@ pub struct Commit {
 }
 /// CommitSig is a part of the Vote included in a Commit.
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CommitSig {
     #[prost(enumeration = "BlockIdFlag", tag = "1")]
     pub block_id_flag: i32,
@@ -239,7 +239,7 @@ pub struct CommitSig {
     pub signature: ::prost::alloc::vec::Vec<u8>,
 }
 /// Block proposal.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct Proposal {
     #[prost(enumeration = "SignedMsgType", tag = "1")]
     pub r#type: i32,
@@ -276,7 +276,7 @@ pub struct LightBlock {
 }
 /// BlockMeta contains meta information about a block.
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct BlockMeta {
     #[prost(message, optional, tag = "1")]
     pub block_id: ::core::option::Option<BlockId>,
@@ -291,7 +291,7 @@ pub struct BlockMeta {
 }
 /// TxProof represents a Merkle proof of the presence of a transaction in the Merkle tree.
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct TxProof {
     #[prost(bytes = "vec", tag = "1")]
     #[serde(with = "crate::serializers::bytes::hexstring")]
@@ -363,7 +363,7 @@ pub mod evidence {
 }
 /// DuplicateVoteEvidence contains evidence of a validator signed two conflicting votes.
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct DuplicateVoteEvidence {
     #[prost(message, optional, tag = "1")]
     pub vote_a: ::core::option::Option<Vote>,
@@ -419,7 +419,7 @@ pub struct Block {
     pub last_commit: ::core::option::Option<Commit>,
 }
 /// EventDataRoundState is emitted with each new round step.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct EventDataRoundState {
     #[prost(int64, tag = "1")]
     pub height: i64,
@@ -431,7 +431,7 @@ pub struct EventDataRoundState {
 /// ConsensusParams contains consensus critical parameters that determine the
 /// validity of blocks.
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ConsensusParams {
     #[prost(message, optional, tag = "1")]
     pub block: ::core::option::Option<BlockParams>,
@@ -444,7 +444,7 @@ pub struct ConsensusParams {
 }
 /// BlockParams contains limits on the block size.
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct BlockParams {
     /// Max block size, in bytes.
     /// Note: must be greater than 0
@@ -463,7 +463,7 @@ pub struct BlockParams {
 }
 /// EvidenceParams determine how we handle evidence of malfeasance.
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct EvidenceParams {
     /// Max age of evidence, in blocks.
     ///
@@ -489,14 +489,14 @@ pub struct EvidenceParams {
 /// ValidatorParams restrict the public key types validators can use.
 /// NOTE: uses ABCI pubkey naming, not Amino names.
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ValidatorParams {
     #[prost(string, repeated, tag = "1")]
     pub pub_key_types: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
 /// VersionParams contains the ABCI application version.
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct VersionParams {
     /// Was named app_version in Tendermint 0.34
     #[prost(uint64, tag = "1")]
@@ -505,7 +505,7 @@ pub struct VersionParams {
 /// HashedParams is a subset of ConsensusParams.
 ///
 /// It is hashed into the Header.ConsensusHash.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct HashedParams {
     #[prost(int64, tag = "1")]
     pub block_max_bytes: i64,
@@ -515,7 +515,7 @@ pub struct HashedParams {
 /// CanonicalBlockID is a canonical representation of a BlockID, which gets
 /// serialized and signed.
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CanonicalBlockId {
     #[prost(bytes = "vec", tag = "1")]
     pub hash: ::prost::alloc::vec::Vec<u8>,
@@ -525,7 +525,7 @@ pub struct CanonicalBlockId {
 /// CanonicalPartSetHeader is a canonical representation of a PartSetHeader,
 /// which gets serialized and signed.
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CanonicalPartSetHeader {
     #[prost(uint32, tag = "1")]
     pub total: u32,
@@ -534,7 +534,7 @@ pub struct CanonicalPartSetHeader {
 }
 /// CanonicalProposal is a canonical representation of a Proposal, which gets
 /// serialized and signed.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CanonicalProposal {
     /// type alias for byte
     #[prost(enumeration = "SignedMsgType", tag = "1")]
@@ -557,7 +557,7 @@ pub struct CanonicalProposal {
 /// CanonicalVote is a canonical representation of a Vote, which gets
 /// serialized and signed.
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CanonicalVote {
     /// type alias for byte
     #[prost(enumeration = "SignedMsgType", tag = "1")]
