@@ -431,9 +431,9 @@ pub struct DuplicateVoteEvidence {
     pub timestamp: ::core::option::Option<crate::google::protobuf::Timestamp>,
 }
 /// LightClientAttackEvidence contains evidence of a set of validators attempting to mislead a light client.
-#[serde(rename_all = "PascalCase")]
 #[derive(::serde::Deserialize, ::serde::Serialize)]
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[serde(rename_all = "PascalCase")]
 pub struct LightClientAttackEvidence {
     #[prost(message, optional, tag = "1")]
     pub conflicting_block: ::core::option::Option<LightBlock>,

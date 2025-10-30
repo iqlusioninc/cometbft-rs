@@ -515,6 +515,7 @@ pub mod v0_38 {
 
     #[derive(Serialize, Debug)]
     #[serde(tag = "type", content = "value")]
+    #[allow(clippy::large_enum_variant)] // TODO(tarcieri): more boxing for `NewBlock`?
     pub enum SerEventData {
         #[serde(alias = "tendermint/event/NewBlock")]
         NewBlock {
