@@ -3,6 +3,7 @@
 use core::str::FromStr;
 
 use cometbft::Hash;
+use futures::StreamExt;
 use iq_cometbft_rpc::{
     client::CompatMode,
     event::{self, Event, EventData},
@@ -10,7 +11,6 @@ use iq_cometbft_rpc::{
     Client, Error, HttpClient, Order, Paging, Scheme, Subscription, SubscriptionClient, Url,
     WebSocketClient,
 };
-use futures::StreamExt;
 use structopt::StructOpt;
 use tokio::{task::JoinHandle, time::Duration};
 use tracing::{debug, error, info, level_filters::LevelFilter, warn};

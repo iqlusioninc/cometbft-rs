@@ -29,92 +29,29 @@ jobs:
   #  - https://github.community/t/support-for-yaml-anchors/16128/15
   #  - https://github.community/t/reusing-sharing-inheriting-steps-between-jobs-declarations/16851/13
   #  - https://github.community/t/using-matrix-variable-in-docker-image-name/17296
-  cometbft:
+  iq-cometbft:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
       - uses: taiki-e/install-action@cargo-hack
-      - run: cargo test -p cometbft
-      - run: cargo hack test --each-feature -p cometbft
+      - run: cargo test -p iq-cometbft
+      - run: cargo hack test --each-feature -p iq-cometbft
 
-  cometbft-rpc:
+  iq-cometbft-rpc:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
       - uses: taiki-e/install-action@cargo-hack
-      - run: cargo test -p cometbft-rpc
-      - run: cargo hack test --each-feature -p cometbft-rpc
+      - run: cargo test -p iq-cometbft-rpc
+      - run: cargo hack test --each-feature -p iq-cometbft-rpc
 
-  cometbft-proto:
+  iq-cometbft-proto:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
       - uses: taiki-e/install-action@cargo-hack
-      - run: cargo test -p cometbft-proto
-      - run: cargo hack test --each-feature -p cometbft-proto
-
-  cometbft-light-client:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@stable
-      - uses: taiki-e/install-action@cargo-hack
-      - run: cargo test -p cometbft-light-client
-      - run: cargo hack test --each-feature -p cometbft-light-client
-
-  # From https://rustwasm.github.io/docs/wasm-bindgen/wasm-bindgen-test/continuous-integration.html#github-actions
-  cometbft-light-client-js:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install wasm-pack
-        run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
-      - run: wasm-pack test --headless --chrome ./light-client-js/
-      - run: wasm-pack test --headless --firefox ./light-client-js/
-
-  cometbft-testgen:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@stable
-      - run: cargo test-all-features -p cometbft-testgen
-
-  kvstore-integration-stable:
-    runs-on: ubuntu-latest
-    services:
-      tendermint:
-        image: cometbft/cometbft:v0.34.35
-        ports:
-          - 26656:26656
-          - 26657:26657
-          - 26660:26660
-    steps:
-      - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@stable
-      - run: cargo test-all-features --manifest-path tools/kvstore-test/Cargo.toml -- --nocapture
-        env:
-          RUST_LOG: debug
-
-  nightly-coverage:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@nightly
-        with:
-          components: llvm-tools-preview
-      - run: cargo test-all-features
-        env:
-          RUSTFLAGS: '-C instrument-coverage -C link-dead-code'
-          LLVM_PROFILE_FILE: '%p-%m.profraw'
-      - name: Install grcov
-        run: |
-          curl -L https://github.com/mozilla/grcov/releases/download/v0.8.18/grcov-x86_64-unknown-linux-gnu.tar.bz2 | tar jxf -
-      - name: Run grcov
-        run: |
-          ./grcov . --source-dir . --binary-path ./target/debug/ --output-type lcov --output-path ./lcov.info --branch --ignore-not-existing
-      - name: Upload to Codecov
-        run: |
-          bash <(curl -s https://codecov.io/bash) -f ./lcov.info
+      - run: cargo test -p iq-cometbft-proto
+      - run: cargo hack test --each-feature -p iq-cometbft-proto
