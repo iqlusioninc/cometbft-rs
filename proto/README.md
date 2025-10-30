@@ -1,4 +1,4 @@
-## cometbft-proto
+## iq-cometbft-proto
 
 [![Crate][crate-image]][crate-link]
 [![Docs][docs-image]][docs-link]
@@ -18,6 +18,7 @@ Crate for interacting with CometBFT [proto structs][cometbft-go-proto-link].
 ## License
 
 Copyright © 2020 Informal Systems
+Copyright © 2025 iqlusion
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use the files in this repository except in compliance with the License.
@@ -33,16 +34,16 @@ limitations under the License.
 
 [//]: # (badges)
 
-[crate-image]: https://img.shields.io/crates/v/cometbft-proto.svg
-[crate-link]: https://crates.io/crates/cometbft-proto
-[docs-image]: https://docs.rs/cometbft-proto/badge.svg
-[docs-link]: https://docs.rs/cometbft-proto/
-[build-image]: https://github.com/cometbft/cometbft-rs/workflows/Rust/badge.svg
-[build-link]: https://github.com/cometbft/cometbft-rs/actions?query=workflow%3ARust
-[audit-image]: https://github.com/cometbft/cometbft-rs/workflows/Audit-Check/badge.svg
-[audit-link]: https://github.com/cometbft/cometbft-rs/actions?query=workflow%3AAudit-Check
+[crate-image]: https://img.shields.io/crates/v/iq-cometbft-proto.svg
+[crate-link]: https://crates.io/crates/iq-cometbft-proto
+[docs-image]: https://docs.rs/iq-cometbft-proto/badge.svg
+[docs-link]: https://docs.rs/iq-cometbft-proto/
+[build-image]: https://github.com/iqlusioninc/cometbft-rs/workflows/Rust/badge.svg
+[build-link]: https://github.com/iqlusioninc/cometbft-rs/actions?query=workflow%3ARust
+[audit-image]: https://github.com/iqlusioninc/cometbft-rs/workflows/Audit-Check/badge.svg
+[audit-link]: https://github.com/iqlusioninc/cometbft-rs/actions?query=workflow%3AAudit-Check
 [license-image]: https://img.shields.io/badge/license-Apache2.0-blue.svg
-[license-link]: https://github.com/cometbft/cometbft-rs/blob/main/LICENSE
+[license-link]: https://github.com/iqlusioninc/cometbft-rs/blob/main/LICENSE
 [rustc-image]: https://img.shields.io/badge/rustc-stable-blue.svg
 
 [//]: # (general links)

@@ -1,13 +1,12 @@
-# cometbft-rs
+# iq-cometbft-rs
 
 [![Crate][crate-image]][crate-link]
 [![Docs][docs-image]][docs-link]
 [![Build Status][build-image]][build-link]
-[![Audit Status][audit-image]][audit-link]
 [![Apache 2.0 Licensed][license-image]][license-link]
 ![Rust Stable][rustc-image]
 
-[CometBFT] client framework in Rust with [TLA+ specifications](/docs/spec).
+[iqlusion]'s fork of [CometBFT] client framework in Rust with [TLA+ specifications](/docs/spec).
 
 CometBFT is a high-performance blockchain consensus engine for Byzantine fault
 tolerant applications written in any programming language.
@@ -34,35 +33,23 @@ See each component for the relevant documentation.
 
 Libraries:
 
-- [cometbft](./cometbft) - CometBFT
-- [cometbft-light-client](./light-client) - CometBFT light client library
-  for verifying signed headers and tracking validator set changes
-- [cometbft-light-client-detector](./light-client-detector) - Library for
-  detecting and reporting attacks against the CometBFT light client
-- [cometbft-light-client-cli](./light-client-cli) - CLI for the light client,
-  for verifying headers, detecting attacks and reporting them.
-- [cometbft-light-client-js](./light-client-js) - Low-level WASM interface for
-  interacting with the CometBFT light client verification functionality
-- [cometbft-proto](./proto) - Protobuf data structures (generated using Prost)
+- [iq-cometbft](./cometbft) - CometBFT
+- [iq-cometbft-proto](./proto) - Protobuf data structures (generated using Prost)
   for wire-level interaction with CometBFT
-- [cometbft-rpc](./rpc) - CometBFT RPC client and response types
+- [iq-cometbft-rpc](./rpc) - CometBFT RPC client and response types
 
 ## Releases
 
 Release tags can be found on
-[GitHub](https://github.com/cometbft/cometbft-rs/releases).
+[GitHub](https://github.com/iqlusioninc/cometbft-rs/releases).
 
 Crates are released on [crates.io](https://crates.io).
 
 ## Contributing
 
-The CometBFT protocols are specified in English in the [cometbft/cometbft
-repo](https://github.com/cometbft/cometbft/tree/main/spec). Any protocol
-changes or clarifications should be contributed there.
-
-This repo contains the TLA+ specifications and Rust implementations for various
-components of CometBFT. See the [CONTRIBUTING.md][contributing] to start
-contributing.
+The CometBFT protocols are specified in English in the
+[cometbft/cometbft repo](https://github.com/cometbft/cometbft/tree/main/spec).
+Any protocol changes or clarifications should be contributed there.
 
 
 ## Resources
@@ -81,6 +68,7 @@ Papers
 ## License
 
 Copyright © 2020 Informal Systems and contributors
+Copyright © 2025 iqlusion
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use the files in this repository except in compliance with the License.
@@ -96,20 +84,19 @@ limitations under the License.
 
 [//]: # (badges)
 
-[crate-image]: https://img.shields.io/crates/v/cometbft.svg
-[crate-link]: https://crates.io/crates/cometbft
-[docs-image]: https://docs.rs/cometbft/badge.svg
-[docs-link]: https://docs.rs/cometbft/
-[build-image]: https://github.com/cometbft/cometbft-rs/workflows/Rust/badge.svg
-[build-link]: https://github.com/cometbft/cometbft-rs/actions?query=workflow%3ARust
-[audit-image]: https://github.com/cometbft/cometbft-rs/workflows/Audit-Check/badge.svg
-[audit-link]: https://github.com/cometbft/cometbft-rs/actions?query=workflow%3AAudit-Check
+[crate-image]: https://img.shields.io/crates/v/iq-cometbft.svg
+[crate-link]: https://crates.io/crates/iq-cometbft
+[docs-image]: https://docs.rs/iq-cometbft/badge.svg
+[docs-link]: https://docs.rs/iq-cometbft/
+[build-image]: https://github.com/iqlusioninc/cometbft-rs/workflows/Rust/badge.svg
+[build-link]: https://github.com/iqlusioninc/cometbft-rs/actions?query=workflow%3ARust
 [license-image]: https://img.shields.io/badge/license-Apache2.0-blue.svg
-[license-link]: https://github.com/interchainio/cometbft-rs/blob/master/LICENSE
+[license-link]: https://github.com/iqlusioninc/cometbft-rs/blob/master/LICENSE
 [rustc-image]: https://img.shields.io/badge/rustc-stable-blue.svg
 
 [//]: # (general links)
 
+[iqlusion]: https://iqlusion.io
 [cometbft-docs-link]: https://docs.rs/cometbft/
 [cometbft-rpc-docs-link]: https://docs.rs/cometbft-rpc/
 [CometBFT]: https://github.com/cometbft/cometbft

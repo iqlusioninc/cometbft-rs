@@ -3,7 +3,7 @@
 
 See the [repo root] for build status, license, rust version, etc.
 
-# cometbft-rpc
+# iq-cometbft-rpc
 
 A Rust implementation of the core types returned by a CometBFT node's RPC 
 endpoint. These can be used to deserialize JSON-RPC responses.
@@ -140,14 +140,14 @@ cargo test --all-features -- --ignored
 
 [//]: # (badges)
 
-[crate-image]: https://img.shields.io/crates/v/cometbft-rpc.svg
-[crate-link]: https://crates.io/crates/cometbft-rpc
-[docs-image]: https://docs.rs/cometbft-rpc/badge.svg
-[docs-link]: https://docs.rs/cometbft-rpc/
+[crate-image]: https://img.shields.io/crates/v/iq-cometbft-rpc.svg
+[crate-link]: https://crates.io/crates/iq-cometbft-rpc
+[docs-image]: https://docs.rs/iq-cometbft-rpc/badge.svg
+[docs-link]: https://docs.rs/iq-cometbft-rpc/
 
 [//]: # (general links)
 
-[repo root]: https://github.com/cometbft/cometbft-rs
+[repo root]: https://github.com/iqlusioninc/cometbft-rs
 [cometbft]: https://github.com/cometbft/cometbft
 [core types]: https://github.com/cometbft/cometbft/blob/8b4a30fada85fccd8f0cb15009344f1cbd8de616/rpc/core/types/responses.go#L1
 [cometbft.rs]: https://crates.io/crates/cometbft
