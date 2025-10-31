@@ -6,14 +6,16 @@
 [![Apache 2.0 Licensed][license-image]][license-link]
 ![Rust Stable][rustc-image]
 
-[iqlusion]'s fork of [CometBFT] client framework in Rust with [TLA+ specifications](/docs/spec).
+[iqlusion]'s fork of the [CometBFT] client framework for Rust.
 
-CometBFT is a high-performance blockchain consensus engine for Byzantine fault
-tolerant applications written in any programming language.
+CometBFT is a high-performance blockchain consensus engine for Byzantine fault-tolerant applications
+written in any programming language.
 
 ## CometBFT Compatibility
 
 cometbft-rs has been tested for compatibility with CometBFT v0.34.x, v0.37.x and v0.38.x.
+
+CometBFT v1.x should be supported but is currently untested.
 
 ## Requirements
 
@@ -84,7 +86,7 @@ limitations under the License.
 
 [//]: # (badges)
 
-[crate-image]: https://img.shields.io/crates/v/iq-cometbft.svg
+[crate-image]: https://img.shields.io/crates/v/iq-cometbft.svg?logo=rust
 [crate-link]: https://crates.io/crates/iq-cometbft
 [docs-image]: https://docs.rs/iq-cometbft/badge.svg
 [docs-link]: https://docs.rs/iq-cometbft/

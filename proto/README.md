@@ -34,7 +34,7 @@ limitations under the License.
 
 [//]: # (badges)
 
-[crate-image]: https://img.shields.io/crates/v/iq-cometbft-proto.svg
+[crate-image]: https://img.shields.io/crates/v/iq-cometbft-proto.svg?logo=rust
 [crate-link]: https://crates.io/crates/iq-cometbft-proto
 [docs-image]: https://docs.rs/iq-cometbft-proto/badge.svg
 [docs-link]: https://docs.rs/iq-cometbft-proto/
@@ -43,7 +43,7 @@ limitations under the License.
 [audit-image]: https://github.com/iqlusioninc/cometbft-rs/workflows/Audit-Check/badge.svg
 [audit-link]: https://github.com/iqlusioninc/cometbft-rs/actions?query=workflow%3AAudit-Check
 [license-image]: https://img.shields.io/badge/license-Apache2.0-blue.svg
-[license-link]: https:/ /github.com/iqlusioninc/cometbft-rs/blob/main/LICENSE
+[license-link]: https://github.com/iqlusioninc/cometbft-rs/blob/main/LICENSE
 [rustc-image]: https://img.shields.io/badge/rustc-stable-blue.svg
 
 [//]: # (general links)

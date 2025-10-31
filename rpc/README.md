@@ -140,7 +140,7 @@ cargo test --all-features -- --ignored
 
 [//]: # (badges)
 
-[crate-image]: https://img.shields.io/crates/v/iq-cometbft-rpc.svg
+[crate-image]: https://img.shields.io/crates/v/iq-cometbft-rpc.svg?logo=rust
 [crate-link]: https://crates.io/crates/iq-cometbft-rpc
 [docs-image]: https://docs.rs/iq-cometbft-rpc/badge.svg
 [docs-link]: https://docs.rs/iq-cometbft-rpc/
