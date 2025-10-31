@@ -17,7 +17,7 @@ Crate for interacting with CometBFT [proto structs][cometbft-go-proto-link].
 
 ## License
 
-Copyright © 2020 Informal Systems
+Copyright © 2020 Informal Systems  
 Copyright © 2025 iqlusion
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -43,7 +43,7 @@ limitations under the License.
 [audit-image]: https://github.com/iqlusioninc/cometbft-rs/workflows/Audit-Check/badge.svg
 [audit-link]: https://github.com/iqlusioninc/cometbft-rs/actions?query=workflow%3AAudit-Check
 [license-image]: https://img.shields.io/badge/license-Apache2.0-blue.svg
-[license-link]: https://github.com/iqlusioninc/cometbft-rs/blob/main/LICENSE
+[license-link]: https:/ /github.com/iqlusioninc/cometbft-rs/blob/main/LICENSE
 [rustc-image]: https://img.shields.io/badge/rustc-stable-blue.svg
 
 [//]: # (general links)

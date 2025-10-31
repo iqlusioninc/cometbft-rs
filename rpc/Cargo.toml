@@ -1,10 +1,10 @@
 [package]
 name       = "iq-cometbft-rpc"
-version    = "0.1.0-pre.1"
+version    = "0.1.0-rc.0"
 edition    = "2021"
 license    = "Apache-2.0"
 homepage   = "https://cometbft.com/"
-repository = "https://github.com/cometbft/cometbft-rs"
+repository = "https://github.com/iqlusioninc/cometbft-rs"
 readme     = "README.md"
 keywords   = ["blockchain", "cosmos", "cometbft", "tendermint"]
 categories = ["cryptography::cryptocurrencies", "network-programming"]
@@ -64,9 +64,9 @@ mock-client = [
 ]
 
 [dependencies]
-cometbft = { package = "iq-cometbft", version = "=0.1.0-pre.1", default-features = false, path = "../cometbft" }
-cometbft-config = { package = "iq-cometbft-config", version = "=0.1.0-pre.1", path = "../config", default-features = false }
-cometbft-proto = { package = "iq-cometbft-proto", version = "=0.1.0-pre.0", path = "../proto", default-features = false }
+cometbft = { package = "iq-cometbft", version = "0.1.0-rc.0", default-features = false, path = "../cometbft" }
+cometbft-config = { package = "iq-cometbft-config", version = "0.1.0-rc.0", path = "../config", default-features = false }
+cometbft-proto = { package = "iq-cometbft-proto", version = "0.1.0-rc.0", path = "../proto", default-features = false }
 
 async-trait = { version = "0.1", default-features = false }
 bytes = { version = "1.0", default-features = false }

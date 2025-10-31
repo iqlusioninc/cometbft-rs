@@ -67,7 +67,7 @@ Papers
 
 ## License
 
-Copyright © 2020 Informal Systems and contributors
+Copyright © 2020 Informal Systems and contributors  
 Copyright © 2025 iqlusion
 
 Licensed under the Apache License, Version 2.0 (the "License");

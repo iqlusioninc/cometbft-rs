@@ -83,7 +83,7 @@ mod tests {
                 bytes: b"test bytes".to_vec(),
             };
             let raw: RawSignBytesRequest = original.clone().into();
-            let decoded = SignBytesRequest::try_from(raw).unwrap();
+            let decoded = SignBytesRequest::from(raw);
             assert_eq!(original, decoded);
         }
 
