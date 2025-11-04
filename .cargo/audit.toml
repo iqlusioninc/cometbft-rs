@@ -1,24 +1,13 @@
 [advisories]
-ignore = []
+ignore = [
+    "RUSTSEC-2024-0370", # `proc-macro-error` is unmaintained (used by `structopt` used by rpc)
+    "RUSTSEC-2024-0436", # `paste` is unmaintained (used by `flex-error`)
+]
 informational_warnings = ["unmaintained"]
 severity_threshold = "low"
-
-[database]
-path = "~/.cargo/advisory-db"
-url = "https://github.com/RustSec/advisory-db.git"
-fetch = true
-stale = false
 
 [output]
 deny = ["unmaintained"] # exit on error if unmaintained dependencies are found
 format = "terminal"
 quiet = false
 show_tree = true
-
-[target]
-arch = "x86_64"
-os = "linux"
-
-[yanked]
-enabled = true
-update_index = true
