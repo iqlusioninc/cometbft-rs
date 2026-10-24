@@ -24,7 +24,7 @@ impl crate::crypto::signature::Verifier for Verifier {
             },
             #[cfg(feature = "secp256k1")]
             PublicKey::Secp256k1(pk) => {
-                use signature::Verifier as _;
+                use k256::ecdsa::signature::Verifier as _;
 
                 let sig = k256::ecdsa::Signature::try_from(signature.as_bytes())
                     .map_err(|_| Error::MalformedSignature)?;
