@@ -2,9 +2,6 @@
 //! for a chain environment that provides its own cryptographic API.
 #![cfg(all(feature = "secp256k1", feature = "rust-crypto"))]
 
-use ::signature::DigestVerifier;
-use digest::Digest;
-
 use iq_cometbft::crypto::signature::{self, Verifier};
 use iq_cometbft::crypto::{sha256::HASH_SIZE, Sha256};
 use iq_cometbft::{PublicKey, Signature};
@@ -24,11 +21,11 @@ impl Verifier for SubstrateSignatureVerifier {
     ) -> Result<(), signature::Error> {
         match pubkey {
             PublicKey::Secp256k1(pk) => {
+                use k256::ecdsa::signature::Verifier as _;
+
                 let sig = k256::ecdsa::Signature::try_from(signature.as_bytes())
                     .map_err(|_| signature::Error::MalformedSignature)?;
-                let mut hasher = sha2::Sha256::new();
-                Digest::update(&mut hasher, msg);
-                pk.verify_digest(hasher, &sig)
+                pk.verify(msg, &sig)
                     .map_err(|_| signature::Error::VerificationFailed)
             },
             _ => Err(signature::Error::UnsupportedKeyType),
